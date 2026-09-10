@@ -1,13 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: nginx-nodeport
 spec:
+# if we dont give any type it will be deafaulty take cluste IP...
+  type: NodePort
   selector:
     project: roboshop
     component: frontend
     environment: dev
+    purpose: node-port
   ports:
     - protocol: TCP
       port: 80  #service Port
       targetPort: 80 #container Port
+      # nodePort: 30007 #NodePort range is 30000-32767
