@@ -11,3 +11,8 @@ spec:
     - protocol: TCP
       port: 80  #service Port
       targetPort: 80 #container Port
+
+# three type of services are there ..
+# cluster IP
+# node port 
+# load balancer
