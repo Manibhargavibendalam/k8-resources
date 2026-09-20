@@ -16,3 +16,18 @@ spec:
     fsType: ext4
     volumeHandle: vol-0ad8e1fafb2584a75
   
+---
+# we need to create pvc
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: ebs-static
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
