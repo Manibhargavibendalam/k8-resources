@@ -38,6 +38,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  labels:
+    purpose: ebs-static
 spec:
   containers:
   - name: nginx
@@ -51,3 +53,19 @@ spec:
   - name: nginx-html
     persistentVolumeClaim:
       claimName: ebs-static
+
+---
+#load balancer for this....
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ebs-static
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: ebs-static
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30007
