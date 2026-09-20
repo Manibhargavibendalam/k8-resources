@@ -14,7 +14,7 @@ spec:
   csi:
     driver: ebs.csi.aws.com
     fsType: ext4
-    volumeHandle: vol-0ad8e1fafb2584a75
+    volumeHandle: vol-068f8d853602eb1f6
   
 ---
 # we need to create pvc
