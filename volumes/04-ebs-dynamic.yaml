@@ -9,9 +9,8 @@ spec:
   resources:
     requests:
       storage: 4Gi
-
 ---
-# we need to claim this in pod...
+#we need to claim the pod
 apiVersion: v1
 kind: Pod
 metadata:
@@ -31,9 +30,9 @@ spec:
   - name: nginx-html
     persistentVolumeClaim:
       claimName: ebs-dynamic
-
 ---
-#load balancer for this....
+#load balancer for this
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -44,6 +43,6 @@ spec:
     purpose: ebs-dynamic
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30007
+      port: 80 # service port
+      targetPort: 80 # container port
+      nodePort: 30007 
